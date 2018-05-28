@@ -15,7 +15,7 @@ public class SplashActivity extends Activity {
             e.printStackTrace();
         }
 
-        startActivity(new Intent(this,MainActivity.class));
+        startActivity(new Intent(this,Mainmenu.class));
         finish();
     }
 }
