@@ -26,6 +26,35 @@
 
     <LinearLayout
         android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <AutoCompleteTextView
+            android:id="@+id/searchText"
+            android:hint="insert"
+            android:layout_width="0dp"
+            android:layout_weight="3"
+            android:layout_height="wrap_content" />
+        <Button
+            android:text="Search"
+            android:onClick="btnSearch"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content" />
+    </LinearLayout>
+
+    <ListView
+        android:id="@+id/list_item"
+        android:layout_width="match_parent"
+        android:layout_height="400dp" />
+    <Button
+        android:layout_gravity="center"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:onClick="Reset"
+        android:text="RESET"/>
+   <!-- <LinearLayout
+        android:layout_width="match_parent"
         android:layout_height="50dp"
         android:background="@color/Search_bar">
 
@@ -36,13 +65,16 @@
             android:layout_margin="8dp"
             android:background="@color/White"/>
 
-    </LinearLayout>
-    <FrameLayout
+    </LinearLayout>-->
+
+
+    <!--<FrameLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:id="@+id/ref">
 
         //여기에 냉장고 재료 박스들 만들면 돼
+
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -61,7 +93,7 @@
                 />
         </LinearLayout>
 
-    </FrameLayout>
+    </FrameLayout>-->
 
 
 </LinearLayout>
