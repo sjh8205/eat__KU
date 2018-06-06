@@ -73,6 +73,8 @@ public class Rec_rec extends AppCompatActivity {
 
         /*
 
+=======
+>>>>>>> f190c03a00be03c1ec92991c9d51001fb5b8c612
         try{    //재료 데이터 배열에 넣기
             is = am.open("ingredient.csv");
 
@@ -108,6 +110,7 @@ public class Rec_rec extends AppCompatActivity {
             public void run(){
                 try{
                     URL url = new URL(info1[99][14]);
+
                     URL url2 = new URL(info1[98][14]);
 
                     HttpURLConnection conn = (HttpURLConnection) url.openConnection();
@@ -123,6 +126,7 @@ public class Rec_rec extends AppCompatActivity {
 
                     InputStream is2 = conn2.getInputStream();
                     bmp2 = BitmapFactory.decodeStream(is2);
+
                 }catch (MalformedURLException e){
                     e.printStackTrace();
                 }catch (IOException e){
