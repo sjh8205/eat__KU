@@ -38,6 +38,7 @@ public class Fix_ref extends AppCompatActivity {
                 android.R.layout.simple_dropdown_item_1line, items));
 
 
+        searchText = (EditText)findViewById(R.id.searchText);
         Button home = (Button)findViewById(R.id.home1);
 
         listView = (ListView)findViewById(R.id.list_item);
@@ -60,30 +61,30 @@ public class Fix_ref extends AppCompatActivity {
             }
         });
 
-        /*
-        for(String str : foods){
-
-        }
-        */
-
-        for(int i = 0 ; i< foods.size() ; i++){
-
-        }
 
     }
 
     public void btnSearch(View view) {
 
-        if(true)
+        int count=0;
+        String food = searchText.getText().toString();
+
+        for(int i=0 ; i<cmp2.length ; i++)
         {
-            searchText = (EditText)findViewById(R.id.searchText);
-            String food = searchText.getText().toString();
+            if(food.equals(cmp2[i]))
+            {
+                count++;
+            }
+        }
+
+        if(count>0)
+        {
             foods.add(food);
             listView.setAdapter(myAdapter);
+            count = 0;
         }
 
     }
-
 
     public void Reset(View view) {
         foods.clear();
