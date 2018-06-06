@@ -73,8 +73,6 @@ public class Rec_rec extends AppCompatActivity {
 
         /*
 
-=======
->>>>>>> f190c03a00be03c1ec92991c9d51001fb5b8c612
         try{    //재료 데이터 배열에 넣기
             is = am.open("ingredient.csv");
 

@@ -11,4 +11,14 @@
     <style name="SplashTheme" parent = "@android:style/Theme.Light.NoTitleBar">
         <item name="android:windowBackground">@drawable/splash</item>
     </style>
+
+    <style name="TextBorder" parent = "@android:style/Theme.Light.NoTitleBar">
+        <item name="android:textColor">#FFFFFFFF</item>
+        <item name="android:textSize">32px</item>
+        <item name="android:typeface">sans</item>
+        <item name="android:shadowColor">#FF000000</item>
+        <item name="android:shadowDx">0</item>
+        <item name="android:shadowDy">-1</item>
+        <item name="android:shadowRadius">1</item>
+    </style>
 </resources>
