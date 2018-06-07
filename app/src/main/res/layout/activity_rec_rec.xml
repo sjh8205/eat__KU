@@ -77,6 +77,7 @@
                 android:textSize="30dp"
                 android:gravity="center"
                 android:textAlignment="center"
+                android:textColorLink="@color/colorAccent"
                 android:text="test"/>
         </RelativeLayout>
 
