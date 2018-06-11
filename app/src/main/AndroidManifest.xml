@@ -18,9 +18,9 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".Mainmenu" />
-        <activity android:name=".Fix_ref" />
-        <activity android:name=".Rec_rec"></activity>
+        <activity android:name=".MainmenuActivity" />
+        <activity android:name=".FixRefActivity" />
+        <activity android:name=".RecActivity"></activity>
     </application>
 
 </manifest>
