@@ -27,20 +27,25 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_margin="10dp"
         android:orientation="horizontal">
 
         <AutoCompleteTextView
             android:id="@+id/searchText"
-            android:hint="insert"
             android:layout_width="0dp"
+            android:layout_height="40dp"
             android:layout_weight="3"
-            android:layout_height="wrap_content" />
+            android:background="@color/White"
+            android:paddingLeft="10dp"
+            android:hint="insert" />
+
         <Button
-            android:text="Search"
-            android:onClick="btnSearch"
             android:layout_width="0dp"
+            android:layout_height="40dp"
             android:layout_weight="1"
-            android:layout_height="wrap_content" />
+            android:background="@drawable/button_click"
+            android:onClick="btnSearch"
+            android:text="Search" />
     </LinearLayout>
 
     <ListView
@@ -50,50 +55,9 @@
     <Button
         android:layout_gravity="center"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_height="40dp"
         android:onClick="Reset"
+        android:background="@drawable/button_click"
         android:text="RESET"/>
-   <!-- <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:background="@color/Search_bar">
-
-        //아래 searchview가 검색창인데 윤성이 너는 edittext로 해서 autoCompleteTextView 사용했지? 구글보면 searchview+searchautocomplete 기능 코드들 많이 나와있어. 그걸로 해보자!
-        <SearchView
-            android:layout_width="match_parent"
-            android:layout_height="34dp"
-            android:layout_margin="8dp"
-            android:background="@color/White"/>
-
-    </LinearLayout>-->
-
-
-    <!--<FrameLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:id="@+id/ref">
-
-        //여기에 냉장고 재료 박스들 만들면 돼
-
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:gravity="bottom">
-
-            //아래 button은 위치만 잡아둔거고 java에서 초기화 기능 넣어주면 돼~
-            <Button
-                android:layout_width="match_parent"
-                android:layout_height="40dp"
-                android:background="@color/Search_bar"
-                android:layout_marginHorizontal="150dp"
-                android:layout_marginVertical="5dp"
-                android:text="초기화"
-                android:textColor="@color/FontColor"
-                />
-        </LinearLayout>
-
-    </FrameLayout>-->
-
 
 </LinearLayout>

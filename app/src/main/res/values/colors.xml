@@ -6,6 +6,8 @@
     <color name="Background">#eeebe6</color>
     <color name="Top_bar">#afd0cf</color>
     <color name="Search_bar">#e4ddd1</color>
+    <color name="Search_bar_click">#aea08a</color>
     <color name="White">#ffffff</color>
+    <color name="Black">#000000</color>
     <color name="FontColor">#716d65</color>
 </resources>
