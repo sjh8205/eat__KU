@@ -109,21 +109,12 @@ public class Rec_rec extends AppCompatActivity {
                 try{
                     URL url = new URL(info1[99][14]);
 
-                    URL url2 = new URL(info1[98][14]);
-
                     HttpURLConnection conn = (HttpURLConnection) url.openConnection();
                     conn.setDoInput((true));
                     conn.connect();
 
                     InputStream is = conn.getInputStream();
                     bmp = BitmapFactory.decodeStream(is);
-
-                    HttpURLConnection conn2 = (HttpURLConnection) url2.openConnection();
-                    conn2.setDoInput((true));
-                    conn2.connect();
-
-                    InputStream is2 = conn2.getInputStream();
-                    bmp2 = BitmapFactory.decodeStream(is2);
 
                 }catch (MalformedURLException e){
                     e.printStackTrace();
