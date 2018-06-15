@@ -56,7 +56,7 @@ public class Fix_ref extends AppCompatActivity {
         home.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) { //Fix_ref 페이지로 넘어가기 (fix_Refrigerator : 냉장고 편집)
-                Intent intent = new Intent(Fix_ref.this, Mainmenu.class);
+                Intent intent = new Intent(Fix_ref.this, MainmenuActivity.class);
                 startActivity(intent);
             }
         });
