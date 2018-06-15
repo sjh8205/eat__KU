@@ -7,22 +7,27 @@ import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
+import android.view.ViewGroup;
+import android.widget.AdapterView;
+import android.widget.BaseAdapter;
 import android.widget.Button;
+import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.io.IOException;
 import java.io.InputStream;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.util.ArrayList;
+
+import static com.example.sonhyejin.eat_ku.MainmenuActivity.reci;
 
 public class RecActivity extends AppCompatActivity {
 
-    String[] info = new String[539];
-    String[][] info1= new String[539][16];
-    String[] ingre = new String[539];
-    String[][] ingre1 = new String[539][16];
-    Bitmap bmp = null;
+    ListView listView;
+    SingerAdapter adapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,100 +44,68 @@ public class RecActivity extends AppCompatActivity {
             }
         });
 
-        AssetManager am = getResources().getAssets();
-        InputStream is = null;
-        byte buf[] = new byte[1000000];
-        String text = "";
+        listView = (ListView) findViewById(R.id.listView);
 
-        try{    //정보 데이터 배열에 넣기
-            is = am.open("info.csv");
+        adapter = new SingerAdapter();
 
-            if(is.read(buf) > 0){
-                text = new String(buf);
+        for (int i=0; i<reci.size(); i++){
+            if(reci.get(i).ing_1 < 10){
+                adapter.addItem(new SingerItem(reci.get(i).name, R.drawable.piano));
+            }else if (reci.get(i).ing_1>=10 && reci.get(i).ing_1 < 50){
+                adapter.addItem(new SingerItem(reci.get(i).name, R.drawable.book));
+            }else {
+                adapter.addItem(new SingerItem(reci.get(i).name, R.drawable.peach));
             }
-
-            for(int i=0;i<539;i++){ //한줄을 자르고
-                info =  text.split("\n");
-            }
-
-            for(int i=0;i<539;i++){ //각 줄을 또 자르고
-                for(int j=0;j<16;j++) {
-                    info1[i] = info[i].split(",");
-                }
-            }
-
-            is.close();
-        }catch (Exception e){
-            e.printStackTrace();
         }
 
-        is = null;
-        text = "";
+        //url로 이미지 표시하는 구문을 어디에 넣어야 할지...
 
-        try{    //재료 데이터 배열에 넣기
-            is = am.open("ingredient.csv");
-
-            if(is.read(buf) > 0){
-                text = new String(buf);
-            }
-
-            for(int i=0;i<6104;i++){ //한줄을 자르고
-                ingre =  text.split("\n");
-            }
-
-            for(int i=0;i<6104;i++){ //각 줄을 또 자르고
-                for(int j=0;j<8;j++) {
-                    ingre1[i] = ingre[i].split(",");
-                }
-            }
-
-            is.close();
-        }catch (Exception e){
-            e.printStackTrace();
-        }
+        listView.setAdapter(adapter);
 
 
-        TextView textView = (TextView) findViewById(R.id.text1);
-        //ImageView imageView = (ImageView) findViewById((R.id.image1));
-
-        textView.setText(info1[99][1]);
-
-        Thread mThread = new Thread(){
+        //클릭하면 레시피 과정 보여주는 페이지로 넘어가도록 고칠 것
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
-            public void run(){
-                try{
-                    URL url = new URL(info1[99][14]);
-
-                    HttpURLConnection conn = (HttpURLConnection) url.openConnection();
-                    conn.setDoInput((true));
-                    conn.connect();
-
-                    InputStream is = conn.getInputStream();
-                    bmp = BitmapFactory.decodeStream(is);
-                }catch (MalformedURLException e){
-                    e.printStackTrace();
-                }catch (IOException e){
-                    e.printStackTrace();
-                }
+            public void onItemClick(AdapterView<?> adapterView, View view, int position, long id) {
+                SingerItem item = (SingerItem) adapter.getItem(position);
+                Toast.makeText(getApplicationContext(), "선택 : " + item.getName(), Toast.LENGTH_LONG).show();
             }
-        };
+        });
 
-        mThread.start();
+    }
 
-        try{
-            mThread.join();
+    class SingerAdapter extends BaseAdapter {
+        ArrayList<SingerItem> items = new ArrayList<SingerItem>();
 
-            //imageView.setImageBitmap((bmp));
-        }catch (InterruptedException e){
-            e.printStackTrace();
+        @Override
+        public int getCount() {
+            return items.size();
         }
 
-        if(is != null){
-            try{
-                is.close();
-            }catch (Exception e){
-                e.printStackTrace();
-            }
+        public void addItem(SingerItem item) {
+            items.add(item);
+        }
+
+        @Override
+        public Object getItem(int position) {
+            return items.get(position);
+        }
+
+        @Override
+        public long getItemId(int position) {
+            return position;
+        }
+
+        @Override
+        public View getView(int position, View convertView, ViewGroup viewGroup) {
+            SingerItemView view = new SingerItemView(getApplicationContext());
+
+            SingerItem item = items.get(position);
+            view.setName(item.getName());
+            view.setImage(item.getResId());
+
+            return view;
         }
     }
+
 }
